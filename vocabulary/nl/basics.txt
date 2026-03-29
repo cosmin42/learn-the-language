@@ -1,0 +1,16 @@
+# Example Dutch basics
+hallo | hello, hi
+goedemorgen | good morning
+goedenavond | good evening
+tot ziens | goodbye, see you
+dank je | thank you, thanks
+alsjeblieft | please, here you go
+ja | yes
+nee | no
+water | water
+brood | bread
+huis | house, home
+fiets | bicycle, bike
+boek | book
+vriend | friend
+liefde | love
