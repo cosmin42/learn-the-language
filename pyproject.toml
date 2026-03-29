@@ -1,0 +1,19 @@
+[project]
+name = "learn-the-language"
+version = "0.1.0"
+description = "CLI vocabulary trainer with Azure-backed translation validation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.scripts]
+learn-the-language = "learn_the_language.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["learn_the_language*"]

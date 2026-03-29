@@ -1,0 +1,4 @@
+# Example French basics
+bonjour | hello, good morning
+merci | thank you, thanks
+au revoir | goodbye, bye
