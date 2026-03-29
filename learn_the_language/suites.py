@@ -21,9 +21,13 @@ def get_vocabulary_root() -> Path:
     return Path(__file__).resolve().parent.parent / "vocabulary"
 
 
-def resolve_suite_path(language_code: str, suite_name: str, root: Path | None = None) -> Path:
+def get_language_path(language_code: str, root: Path | None = None) -> Path:
     base_root = root or get_vocabulary_root()
-    language_path = base_root / language_code
+    return base_root / language_code
+
+
+def resolve_suite_path(language_code: str, suite_name: str, root: Path | None = None) -> Path:
+    language_path = get_language_path(language_code, root=root)
     if not language_path.is_dir():
         raise SuiteError(f"Language folder not found: {language_path}")
 
@@ -32,6 +36,10 @@ def resolve_suite_path(language_code: str, suite_name: str, root: Path | None = 
         raise SuiteError(f"Suite not found: {suite_path}")
 
     return suite_path
+
+
+def get_suite_output_path(language_code: str, suite_name: str, root: Path | None = None) -> Path:
+    return get_language_path(language_code, root=root) / f"{suite_name}.txt"
 
 
 def parse_suite_line(raw_line: str, line_number: int) -> VocabularyEntry:
@@ -67,3 +75,8 @@ def load_suite(language_code: str, suite_name: str, root: Path | None = None) ->
         raise SuiteError(f"Suite is empty: {suite_path}")
 
     return entries
+
+
+def format_entry(entry: VocabularyEntry) -> str:
+    translations = ", ".join(entry.accepted_translations)
+    return f"{entry.source_word} | {translations}"
